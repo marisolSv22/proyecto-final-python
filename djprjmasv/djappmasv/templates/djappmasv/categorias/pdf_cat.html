@@ -1,0 +1,28 @@
+{% block cuerpo %} 
+
+  {% load static %}
+  <center><h1>Categorias</h1></center>
+  <table align="center">
+    <thead>
+        <th>ID CATEGORIA</th>
+        <th>CATEGORIA</th>
+        <th>ESTADO</th>
+    </thead>
+    <tbody>
+        {% for cat in object_list %}
+    <tr>
+        <td>{{cat.id_categoria}}</td>
+        <td>{{cat.categoria}}</td>
+        <td>{{cat.estado}}</td>
+    </tr>
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+<link rel="stylesheet" href="{% static 'djappmasv/css/pdf.css' %}" />
+              <script
+                type="text/javascript"
+                src="{% static 'djappmasv/js/libreria.js' %}"
+              ></script>
+{% endblock cuerpo %}

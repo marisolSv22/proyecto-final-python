@@ -1,0 +1,28 @@
+{% block cuerpo %} 
+
+  {% load static %}
+  <center><h1>Libro por Autor</h1></center>
+<table align="center">
+    <thead>
+        <th>ID AUTOR</th>
+        <th>ISBN</th>
+        <th>ESTADO</th>
+    </thead>
+    <tbody>
+        {% for liba in object_list %}
+    <tr>
+        <td>{{liba.id_autor}}</td>
+        <td>{{liba.isbn}}</td>
+        <td>{{liba.estado}}</td>
+    </tr>
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+<link rel="stylesheet" href="{% static 'djappmasv/css/pdf.css' %}" />
+              <script
+                type="text/javascript"
+                src="{% static 'djappmasv/js/libreria.js' %}"
+              ></script>
+{% endblock cuerpo %}

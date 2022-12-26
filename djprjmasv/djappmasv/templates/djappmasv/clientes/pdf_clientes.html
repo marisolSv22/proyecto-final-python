@@ -1,0 +1,38 @@
+{% block cuerpo %} 
+
+  {% load static %}
+  <center><h1>Clientes</h1></center>
+<table align="center">
+    <thead>
+        <th>ID CLIENTE</th>
+        <th>IDENTIFICACIÓN</th>
+        <th>NOMBRES</th>
+        <th>APELLIDOS</th>
+        <th>TELEFONO</th>
+        <th>DIRECCIÓN</th>
+        <th>CORREO ELECTRONICO</th>
+        <th>ESTADO</th>
+    </thead>
+    <tbody>
+        {% for cli in object_list %}
+    <tr>
+        <td>{{cli.id_cliente}}</td>
+        <td>{{cli.identificacion}}</td>
+        <td>{{cli.nombres}}</td>
+        <td>{{cli.apellidos}}</td>
+        <td>{{cli.telefono}}</td>
+        <td>{{cli.direccion}}</td>
+        <td>{{cli.correo_electronico}}</td>
+        <td>{{cli.estado}}</td>
+    </tr>
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+<link rel="stylesheet" href="{% static 'djappmasv/css/pdf.css' %}" />
+              <script
+                type="text/javascript"
+                src="{% static 'djappmasv/js/libreria.js' %}"
+              ></script>
+{% endblock cuerpo %}

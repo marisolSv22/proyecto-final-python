@@ -1,0 +1,40 @@
+{% block cuerpo %} 
+
+  {% load static %}
+    <center><h1>Pedido</h1></center>
+        <table align="center">
+            <thead>
+                <th>ID PEDIDO</th>
+                <th>NRO PEDIDO</th>
+                <th>ID CLIENTE</th>
+                <th>ISBN</th>
+                <th>FECHA PEDIDO</th>
+                <th>CANTIDAD </th>
+                <th>SUBTOTAL</th>
+                <th>ESTADO</th>
+            </thead>
+            <tbody>
+                {% for ped in object_list %}
+            <tr>
+                <td>{{ped.id_pedido}}</td>
+                <td>{{ped.nro_pedido}}</td>
+                <td>{{ped.id_cliente}}</td>
+                <td>{{ped.isbn}}</td>
+                <td>{{ped.fecha_pedido}}</td>
+                <td>{{ped.cantidad}}</td>
+                <td>{{ped.subtotal}}</td>
+                <td>{{ped.estado}}</td>
+        
+            </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div><br>
+        
+
+              <link rel="stylesheet" href="{% static 'djappmasv/css/pdf.css' %}" />
+              <script
+                type="text/javascript"
+                src="{% static 'djappmasv/js/libreria.js' %}"
+              ></script>
+              {% endblock cuerpo %}

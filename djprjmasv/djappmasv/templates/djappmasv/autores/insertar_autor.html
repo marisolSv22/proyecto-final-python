@@ -1,0 +1,20 @@
+{% extends 'djappmasv/base.html' %}
+
+{% block cuerpo %} 
+
+{% load static %}
+
+    <div><button id="cerrar">X</button></div>
+        <div>
+        <form action="" method="post">
+            {{ form.as_table }}
+            {% csrf_token %}
+            <tr>
+                <td><button type="submit">Guardar</button></td>
+            </tr>
+            
+            <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}" />
+            <script type="text/javascript" src="{% static 'djappmasv/js/libreria.js' %}"></script>
+        </form>
+    </div> 
+    {% endblock cuerpo %}

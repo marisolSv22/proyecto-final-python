@@ -1,0 +1,49 @@
+{% block cuerpo %} 
+
+  {% load static %}
+        <center><h1>Libro</h1></center>
+        <table align="center">
+            <thead>
+                <th>ISBN</th>
+                <th>TITULO</th>
+                <th>FECHA PUBLICACIÓN</th>
+                <th>PRECIO</th>
+                <th>PORTADA</th>
+                <th>CANTIDAD STOCK</th>
+                <th>ESTADO</th>
+                <th>CATEGORIA</th>
+            </thead>
+            <tbody>
+                {% for lib in object_list %} 
+            <tr>
+                <td>{{lib.isbn}}</td>
+                <td>{{lib.titulo}}</td>
+                <td>{{lib.fecha_pub}}</td>
+                <td>{{lib.precio}}</td>
+                <td><img src="/media/{{ media_url }}/{{ form.portada }}" width="50" alt=""> </td>
+                <td>{{lib.cantidad_stock}}</td>
+                <td>{{lib.estado}}</td>
+                <td>{{lib.categoria}}</td>
+        
+                <td>
+                  <a href="{% url 'actualizar_libros' lib.isbn %}">
+                      <img src="{% static 'djappmasv/images/editar.png' %}" width="35px" height="35px">
+                  </a>
+                  <a href="{% url 'eliminar_libros' lib.isbn %}">
+                      <img src="{% static 'djappmasv/images/borrar.png' %}" width="35px" height="35px">
+                  </a>
+                </td>
+        
+            </tr>
+              {% endfor %} 
+            </tbody>
+          </table>
+        </div><br>
+        
+
+              <link rel="stylesheet" href="{% static 'djappmasv/css/pdf.css' %}" />
+              <script
+                type="text/javascript"
+                src="{% static 'djappmasv/js/libreria.js' %}"
+              ></script>
+              {% endblock cuerpo %}

@@ -1,0 +1,59 @@
+{% extends 'djappmasv/base.html' %}
+
+{% block titulo  %}Iniciar Sesion{% endblock titulo %}
+
+{% block cuerpo %}
+
+    {% load static %}
+
+    {% if user.is_authenticated %}
+        <h1>{{ user.last_name }}{{ user.first_name }}</h1>
+        <tr>
+            <td>
+              <nav>
+                <ul>
+                    <li><a href="{%  url 'cerrar_sesion' %}">Cerrar Sesion</a></li>
+                </ul>
+            </nav>
+          </td>
+        </tr>
+
+    {% else %}
+
+    <div id="contenedor">    
+        <div id="central">
+            <div id="login">
+            <h1 id="titul">Login</h1>
+            <br>
+                <center>
+                    <form id="loginform" action="{% url 'inicio_sesion' %}" method="post">
+                        <table>
+                        {% csrf_token %}
+                        <tr>
+                            <td><input id="usuario" type="text" name="usuario" placeholder="Usuario" required></td>
+                        </tr>
+                        <tr>
+                            <td><input id="password" type="password" placeholder="Contraseña" name="password" required></td>
+                        </tr>
+                        <tr>
+                            <td><button id="btn__registrarse" type="submit">Iniciar Sesión</button></td>
+                        </tr>
+                        <br>
+                        </table>
+                    </form>
+                    <div class="pie-form">
+                        <a href="">¿Olvidaste tu contraseña?</a>
+                        <br>
+                        <a href="">¿No tienes Cuenta? Registrate</a>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+
+    <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}">
+    <script type="text/javascript" src="{% static 'djappmasv/js/libreria.js' %}"></script>
+{% endblock cuerpo %}

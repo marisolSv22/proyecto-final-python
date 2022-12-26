@@ -1,0 +1,68 @@
+{% extends 'djappmasv/base.html' %}
+
+{% block titulo %}Pedidos Cliente{% endblock titulo %}
+
+{% block cuerpo %} 
+
+  {% load static %}
+
+  {% if user.is_authenticated %}
+  <a href="{% url 'cerrar_sesion' %}" alt="CERRAR SESION">{{ usuario.last_name }}{{ usuario.first_name }}</a>
+  <h1 id="titulo">Pedidos Cliente</h1>
+  <div class="container">
+    <button><a href="{% url 'insertar_pedido' %}">Ingresar</button></a>
+    <a href="{% url 'generarpdfpc' %}">Generar reporte</a>
+    <br><br>
+  <div>
+  <table align="center">
+    <thead>
+        <th>ID PEDIDO</th>
+        <th>NRO PEDIDO</th>
+        <th>ID CLIENTE</th>
+        <th>ISBN</th>
+        <th>FECHA PEDIDO</th>
+        <th>CANTIDAD </th>
+        <th>SUBTOTAL</th>
+        <th>ESTADO</th>
+        <th>ACCIONES</th>
+    </thead>
+    <tbody>
+        {% for ped in object_list %}
+        {% if ped.estado == 'ACTIVO' %} 
+    <tr>
+        <td>{{ped.id_pedido}}</td>
+        <td>{{ped.nro_pedido}}</td>
+        <td>{{ped.id_cliente}}</td>
+        <td>{{ped.isbn}}</td>
+        <td>{{ped.fecha_pedido}}</td>
+        <td>{{ped.cantidad}}</td>
+        <td>{{ped.subtotal}}</td>
+        <td>{{ped.estado}}</td>
+
+        <td>
+          <a href="{% url 'actualizar_pedido' ped.id_pedido %}">
+              <img src="{% static 'djappmasv/images/editar.png' %}" width="35px" height="35px">
+          </a>
+          <a href="{% url 'eliminar_pedido' ped.id_pedido %}">
+              <img src="{% static 'djappmasv/images/borrar.png' %}" width="35px" height="35px">
+          </a>
+        </td>
+
+    </tr>
+    {% endif %} 
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+
+  {% else %}
+  <h2>Esta intentando ingresar a una página que no existe</h2>
+  {% endif %}
+
+  <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}" />
+  <script
+    type="text/javascript"
+    src="{% static 'djappmasv/js/libreria.js' %}"
+  ></script>
+  {% endblock cuerpo %}

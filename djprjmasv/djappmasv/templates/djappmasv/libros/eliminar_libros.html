@@ -1,0 +1,21 @@
+{% extends 'djappmasv/base.html' %}
+
+{% block cuerpo %} 
+
+{% load static %}
+         
+        <form method="post"> 
+            {% csrf_token %} 
+            <h2>¿Desea eliminar el libro {{libro.id_libro}} ?</h2>
+            <tr>
+                <td><button type="submit">Si, Eliminar</button></td>
+            </tr>
+            <tr>
+                <button><a href="{% url 'libros' %}">Cancelar</button></a>
+            </tr>
+        </form> 
+            
+            <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}" />
+            <script type="text/javascript" src="{% static 'djappmasv/js/libreria.js' %}"></script>
+        </form> 
+    {% endblock cuerpo %}

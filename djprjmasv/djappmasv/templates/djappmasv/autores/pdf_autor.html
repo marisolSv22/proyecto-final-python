@@ -1,0 +1,29 @@
+{% block cuerpo %} 
+
+  {% load static %}
+  <center><h1>Categorias</h1></center>
+  <table align="center">
+    <thead>
+        <th>NOMBRES</th>
+        <th>APELLIDOS</th>
+        <th>ESTADO</th>
+        <th>ACCIONES</th>
+    </thead>
+    <tbody>
+        {% for aut in object_list %}
+    <tr>
+        <td>{{aut.nombres}}</td>
+        <td>{{aut.apellidos}}</td>
+        <td>{{aut.estado}}</td>
+    </tr>
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+<link rel="stylesheet" href="{% static 'djappmasv/css/pdf.css' %}" />
+              <script
+                type="text/javascript"
+                src="{% static 'djappmasv/js/libreria.js' %}"
+              ></script>
+{% endblock cuerpo %}

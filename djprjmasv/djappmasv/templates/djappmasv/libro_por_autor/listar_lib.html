@@ -1,0 +1,58 @@
+{% extends 'djappmasv/base.html' %} 
+
+{% block titulo %}Libro por Autor{% endblock titulo %}
+
+{% block cuerpo %} 
+
+  {% load static %}
+
+  {% if user.is_authenticated %}
+  <a href="{% url 'cerrar_sesion' %}" alt="CERRAR SESION">{{ usuario.last_name }}{{ usuario.first_name }}</a>
+  <h1 id="titulo">Libro por Autor</h1>
+  <div class="container">
+    <button id="ingresar"><a href="{% url 'insertar_lib' %}">Ingresar</button></a>
+    <a href="{% url 'generarpdflpa' %}">Generar reporte</a>
+    <br><br>
+  <div>
+  <table align="center">
+    <thead>
+        <th>ID AUTOR</th>
+        <th>ISBN</th>
+        <th>ESTADO</th>
+        <th>ACCIONES</th>
+    </thead>
+    <tbody>
+        {% for liba in object_list %}
+        {% if liba.estado == 'ACTIVO' %}
+    <tr>
+        <td>{{liba.id_autor}}</td>
+        <td>{{liba.isbn}}</td>
+        <td>{{liba.estado}}</td>
+
+        <td>
+          <a href="{% url 'actualizar_lib' liba.id_autor %}">
+              <img src="{% static 'djappmasv/images/editar.png' %}" width="35px" height="35px">
+          </a>
+          <a href="{% url 'eliminar_lib' liba.id_autor %}">
+              <img src="{% static 'djappmasv/images/borrar.png' %}" width="35px" height="35px">
+          </a>
+        </td>
+
+    </tr>
+      {% endif %}
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+
+  {% else %}
+  <h2>Esta intentando ingresar a una página que no existe</h2>
+  {% endif %}
+
+  <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}" />
+  <script
+    type="text/javascript"
+    src="{% static 'djappmasv/js/libreria.js' %}"
+  ></script>
+  {% endblock cuerpo %}

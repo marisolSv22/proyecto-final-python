@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block titulo %} {% endblock titulo %}</title>
+        
+        <tr>
+            <td>
+              <nav>
+                <ul>
+                  <li><a href="{% url 'inicio' %}" >Inicio</a></li>
+                  <li><a href="{% url 'clientes' %}" >Clientes</a></li>
+                  <li><a href="{% url 'autores' %}" >Autores</a></li>
+                  <li><a href="{% url 'categoria' %}" >Categoria</a></li>
+                  <li><a href="{% url 'libros' %}" >Libros</a></li>
+                  <li><a href="{% url 'pedido' %}" >Pedidos</a></li>
+                  <li><a href="{% url 'libroporautor' %}" >Libro Por Autor</a></li>
+                  <li><a href="{% url 'usuario' %}" >Usuario</a></li>
+                  <li><a href="{% url 'login' %}" >Login</a></li>
+                </ul>
+              </nav>
+            </td>
+          </tr>
+
+    </head>
+    <body>
+        {% block cuerpo %}
+        {% endblock cuerpo %}
+    </body>
+</html>

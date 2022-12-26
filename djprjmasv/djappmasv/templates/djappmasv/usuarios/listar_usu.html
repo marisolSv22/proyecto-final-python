@@ -1,0 +1,58 @@
+{% extends 'djappmasv/base.html' %} 
+
+{% block titulo %}Usuario{% endblock titulo %}
+
+{% block cuerpo %} 
+
+  {% load static %}
+
+  {% if user.is_authenticated %}
+  <a href="{% url 'cerrar_sesion' %}" alt="CERRAR SESION">{{ usuario.last_name }}{{ usuario.first_name }}</a>
+  <h1 id="titulo">Usuarios</h1>
+  <div class="container">
+    <button><a href="{% url 'insertar_usuario' %}">Ingresar</button></a>
+    <a href="{% url 'generarpdfusu' %}">Generar reporte</a>
+    <br><br>
+  <div>
+  <table align="center">
+    <thead>
+        <th>ID USUARIO</th>
+        <th>ID CLIENTE</th>
+        <th>USUARIO</th>
+        <th>CLAVE</th>
+        <th>ACCIONES</th>
+    </thead>
+    <tbody>
+        {% for usu in object_list %} 
+    <tr>
+        <td>{{usu.id_usuario}}</td>
+        <td>{{usu.id_cliente}}</td>
+        <td>{{usu.usuario}}</td>
+        <td>{{usu.clave}}</td>
+
+        <td>
+          <a href="{% url 'actualizar_usuario' usu.id_usuario %}">
+              <img src="{% static 'djappmasv/images/editar.png' %}" width="35px" height="35px">
+          </a>
+          <a href="{% url 'eliminar_usuario' usu.id_usuario %}">
+              <img src="{% static 'djappmasv/images/borrar.png' %}" width="35px" height="35px">
+          </a>
+        </td>
+
+    </tr> 
+      {% endfor %} 
+    </tbody>
+  </table>
+</div><br>
+
+
+  {% else %}
+  <h2>Esta intentando ingresar a una página que no existe</h2>
+  {% endif %}
+
+  <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}" />
+  <script
+    type="text/javascript"
+    src="{% static 'djappmasv/js/libreria.js' %}"
+  ></script>
+  {% endblock cuerpo %}
