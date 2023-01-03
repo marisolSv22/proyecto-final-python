@@ -212,6 +212,15 @@ class LibrosList_masv(ListView):
     def get_queryset(self):
         return TblLibros.objects.filter(estado='ACTIVO')
 
+    try:
+        foto_p = request.FILES['portada']
+        ruta_foto = f"/media/media/{foto_p.name}"
+        fs = FileSystemStorage()
+        file_name = fs.save(foto_p.name, foto_p)
+    except:
+        ruta_foto = "/media/no_imagen.png"
+
+
     def dispatch(self, request, *args, **kwargs) :
         if self.request.user.is_anonymous:
             return redirect('error')
@@ -225,11 +234,11 @@ class LibrosAdd_masv(CreateView):
 
     try:
         foto_p = request.FILES['portada']
-        ruta_foto = f"media/{foto_p.name}"
+        ruta_foto = f"media/media/{foto_p.name}"
         fs = FileSystemStorage()
         file_name = fs.save(foto_p.name, foto_p)
     except:
-        ruta_foto = "media/no_imagen.png"
+        ruta_foto = "/edia/no_imagen.png"
 
     def get_success_url(self):
         return reverse('libros')
@@ -244,11 +253,11 @@ class LibrosUpd_masv(UpdateView):
 
     try:
         foto_p = request.FILES['portada']
-        ruta_foto = f"media/{foto_p.name}"
+        ruta_foto = f"/media/media/{foto_p.name}"
         fs = FileSystemStorage()
         file_name = fs.save(foto_p.name, foto_p)
     except:
-        ruta_foto = "media/no_imagen.png"
+        ruta_foto = "/media/no_imagen.png"
 
     def dispatch(self, request, *args, **kwargs) :
         if self.request.user.is_anonymous:

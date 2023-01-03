@@ -124,7 +124,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Ruta donde se almacenaran las imagenes
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
 
 # Configuración de cierre de sesión:

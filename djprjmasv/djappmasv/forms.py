@@ -133,7 +133,7 @@ class FormularioLibros_masv(forms.ModelForm):
             
             'isbn': forms.TextInput(attrs={'class': 'form-control'}) ,
             'titulo': forms.TextInput(attrs={'class': 'form-control'}),
-            'fecha_pub': forms.DateInput(attrs={'class': 'form-control'}),
+            'fecha_pub': forms.DateTimeInput(attrs={'class': 'form-control'}),
             'precio': forms.TextInput(attrs={'class': 'form-control'}),
             'portada': forms.FileInput(attrs = {'class':'form-control'}),
             'cantidad_stock': forms.TextInput(attrs={'class': 'form-control'}),

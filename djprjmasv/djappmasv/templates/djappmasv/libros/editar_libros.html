@@ -1,19 +1,25 @@
 {% extends 'djappmasv/base.html' %}
 
+{% block titulo %}Libro{% endblock titulo %}
+
 {% block cuerpo %} 
 
 {% load static %}
-         
+
+    <div>
+        <h1 id="titulo">Editar Libro</h1>
+        <br>
         <form method="post"> 
             {% csrf_token %} 
             {{ form }} 
             <tr>
                 <td><button type="submit">Guardar</button></td>
+                <td><button type="button" onClick="history.go(-1);">Cancelar</button></td>
             </tr>
+
         </form> 
             
             <link rel="stylesheet" href="{% static 'djappmasv/css/libreria.css' %}" />
             <script type="text/javascript" src="{% static 'djappmasv/js/libreria.js' %}"></script>
-        </form>
     </div> 
     {% endblock cuerpo %}
